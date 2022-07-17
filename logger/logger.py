@@ -13,26 +13,26 @@ class LogLevel(Enum):
 class Logger(ABC):
 
     @abstractmethod
-    def debug(self, msg: str):
+    def debug(self, tag: str, msg: str):
         ...
 
     @abstractmethod
-    def info(self, msg: str):
+    def info(self, tag: str, msg: str):
         ...
 
     @abstractmethod
-    def verbose(self, msg: str):
+    def verbose(self, tag: str, msg: str):
         ...
 
     @abstractmethod
-    def error(self, msg: str):
+    def error(self, tag: str, msg: str):
         ...
 
 
 class LogTarget(ABC):
 
     @abstractmethod
-    def write(self, level: LogLevel, msg: str):
+    def write(self, level: LogLevel, tag: str, msg: str):
         ...
 
 
@@ -40,35 +40,35 @@ class FileTarget(LogTarget):
     def __init__(self, path: str):
         self._path = path
 
-    def write(self, level: LogLevel, msg: str):
+    def write(self, level: LogLevel, tag: str, msg: str):
         with open(self._path, 'a') as output:
             time = datetime.now().strftime('%d/%m/%y %H:%M:%S')
-            output.write(f'{time} [{level.name}] {msg}\n')
+            output.write(f'{time} [{level.name}] [{tag}] {msg}\n')
 
 
 class SystemOutTarget(LogTarget):
 
-    def write(self, level: LogLevel, msg: str):
+    def write(self, level: LogLevel, tag: str, msg: str):
         time = datetime.now().strftime('%d/%m/%y %H:%M:%S')
-        print(f'{time} [{level.name}] {msg}\n')
+        print(f'{time} [{level.name}] [{tag}] {msg}\n')
 
 
 class LoggerImpl(Logger):
     def __init__(self, targets: [LogTarget]):
         self._targets = targets
 
-    def debug(self, msg: str):
+    def debug(self, tag: str, msg: str):
         for target in self._targets:
-            target.write(LogLevel.DEBUG, msg)
+            target.write(LogLevel.DEBUG, tag, msg)
 
-    def info(self, msg: str):
+    def info(self, tag: str, msg: str):
         for target in self._targets:
-            target.write(LogLevel.INFO, msg)
+            target.write(LogLevel.INFO, tag, msg)
 
-    def verbose(self, msg: str):
+    def verbose(self, tag: str, msg: str):
         for target in self._targets:
-            target.write(LogLevel.VERBOSE, msg)
+            target.write(LogLevel.VERBOSE, tag, msg)
 
-    def error(self, msg: str):
+    def error(self, tag: str, msg: str):
         for target in self._targets:
-            target.write(LogLevel.ERROR, msg)
+            target.write(LogLevel.ERROR, tag, msg)
