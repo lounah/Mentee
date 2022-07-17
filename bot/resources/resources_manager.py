@@ -3,7 +3,7 @@ from bot.resources.messages import messages
 
 
 class ResourcesManager:
-    def init(self, lang: str):
+    def __init__(self, lang: str):
         self._locale = lang
 
     def message(self, key: str) -> str:
