@@ -9,6 +9,14 @@ keyboards = {
         ]),
         'about': InlineKeyboardMarkup([
             [InlineKeyboardButton('🔙 Назад', callback_data=str('about_back'))],
+        ]),
+        'find_a_mentee': InlineKeyboardMarkup([
+            [InlineKeyboardButton('🔥 Продолжить', callback_data=str('find_a_mentee_proceed'))],
+            [InlineKeyboardButton('🔙 Назад', callback_data=str('find_a_mentee_back'))],
+        ]),
+        'become_a_mentee': InlineKeyboardMarkup([
+            [InlineKeyboardButton('🔥 Продолжить', callback_data=str('become_a_mentee_proceed'))],
+            [InlineKeyboardButton('🔙 Назад', callback_data=str('become_a_mentee_back'))],
         ])
     },
     'en': {
@@ -19,6 +27,14 @@ keyboards = {
         ]),
         'about': InlineKeyboardMarkup([
             [InlineKeyboardButton('🔙 Back', callback_data=str('about_back'))],
+        ]),
+        'find_a_mentee': InlineKeyboardMarkup([
+            [InlineKeyboardButton('🔥 Proceed', callback_data=str('find_a_mentee_proceed'))],
+            [InlineKeyboardButton('🔙 Back', callback_data=str('find_a_mentee_back'))],
+        ]),
+        'become_a_mentee': InlineKeyboardMarkup([
+            [InlineKeyboardButton('🔥 Proceed', callback_data=str('become_a_mentee_proceed'))],
+            [InlineKeyboardButton('🔙 Back', callback_data=str('become_a_mentee_back'))],
         ])
     }
 }

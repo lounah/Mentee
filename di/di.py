@@ -4,6 +4,8 @@ from typing import List
 from telegram.ext import Handler
 
 from bot.handlers.about_us_handler import AboutUsHandler, AboutUsBackHandler
+from bot.handlers.become_a_mentee_handler import BecomeAMenteeBackHandler, BecomeAMenteeHandler
+from bot.handlers.find_a_mentee_handler import FindAMenteeHandler, FindAMenteeBackHandler
 from bot.mentee_bot import MenteeBot
 from bot.config import DebugConfig, ReleaseConfig
 from bot.controller import BotController, DebugBotController, ReleaseBotController
@@ -45,4 +47,8 @@ class Di:
             StartHandler(self._resources, self._logger),
             AboutUsHandler(self._resources, self._logger),
             AboutUsBackHandler(self._resources, self._logger),
+            FindAMenteeHandler(self._resources, self._logger),
+            FindAMenteeBackHandler(self._resources, self._logger),
+            BecomeAMenteeHandler(self._resources, self._logger),
+            BecomeAMenteeBackHandler(self._resources, self._logger),
         ]
