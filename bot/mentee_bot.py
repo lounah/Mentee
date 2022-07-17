@@ -1,6 +1,6 @@
 import threading
 
-from controller import BotController
+from bot.controller import BotController
 from logger.logger import Logger
 
 

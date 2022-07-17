@@ -1,6 +1,11 @@
+import os
+
+from di.di import Di
+
 
 def main():
-    pass
+    di = Di(os.getenv('token'))
+    di.bot().start()
 
 
 if __name__ == '__main__':
